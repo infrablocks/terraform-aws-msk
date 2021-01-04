@@ -1,0 +1,32 @@
+---
+region: 'eu-west-2'
+availability_zones:
+  - "eu-west-2a"
+  - "eu-west-2b"
+
+component: 'test'
+
+tags:
+  ImportantTag: "important-value"
+
+work_directory: 'build'
+configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')}"
+
+vpc_cidr: "10.1.0.0/16"
+
+cluster_name: 'test-cluster'
+number_of_broker_nodes: 2
+
+s3_logs_enabled: false
+s3_logs_bucket_name: ""
+s3_logs_prefix: ""
+
+include_default_ingress_rule: "yes"
+include_default_egress_rule: "yes"
+
+allowed_cidrs:
+  - '10.1.0.0/16'
+egress_cidrs:
+  - '10.1.0.0/16'
+
+private_zone_id: "Z00024102SGL0I8C60AZZ"
