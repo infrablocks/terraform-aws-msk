@@ -30,26 +30,26 @@ variable cluster_name {
   type = string
 }
 variable kafka_version {
-  type = string
+  type    = string
   default = "2.7.0"
 }
 variable number_of_broker_nodes {
   default = 3
-  type = number
+  type    = number
 }
 variable instance_type {
-  type = string
+  type    = string
   default = "kafka.m5.large"
 }
 variable ebs_volume_size {
   default = 1000
-  type = number
+  type    = number
 }
 variable client_subnets {
   type = list(string)
 }
 variable s3_logs_prefix {
-  type = string
+  type    = string
   default = "logs/msk-"
 }
 variable cloud_watch_logs_enabled {
@@ -71,7 +71,7 @@ variable s3_logs_bucket_name {
   default = ""
 }
 variable tags {
-  type = map(string)
+  type        = map(string)
   description = "Additional resource tags"
-  default = {}
+  default     = {}
 }
