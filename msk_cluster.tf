@@ -12,6 +12,10 @@ resource "aws_msk_cluster" "cluster" {
 
   encryption_info {
     encryption_at_rest_kms_key_arn = aws_kms_key.cluster_key.arn
+    encryption_in_transit {
+      client_broker = "TLS"
+      in_cluster    = true
+    }
   }
 
   open_monitoring {
@@ -24,6 +28,12 @@ resource "aws_msk_cluster" "cluster" {
       }
     }
   }
+  configuration_info {
+    arn      = "${aws_msk_configuration.msk-config.arn}"
+    revision = "${aws_msk_configuration.msk_config.latest_revision}"
+  }
+
+
 
   logging_info {
     broker_logs {
