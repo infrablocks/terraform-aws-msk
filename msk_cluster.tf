@@ -29,8 +29,8 @@ resource "aws_msk_cluster" "cluster" {
     }
   }
   configuration_info {
-    arn      = "${aws_msk_configuration.msk_config.arn}"
-    revision = "${aws_msk_configuration.msk_config.latest_revision}"
+    arn      = aws_msk_configuration.msk_config.arn
+    revision = aws_msk_configuration.msk_config.latest_revision
   }
 
 
