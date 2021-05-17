@@ -36,16 +36,15 @@ module "msk_cluster" {
 
   cluster_name = "my-cluster"
   vpc_id = "vpc-id"
-  egress_cidrs = "0.0.0.0/0"
+  egress_cidrs = ["0.0.0.0/0"]
   allowed_cidrs = ["10.1.0.0/16"]
   
-  number_of_broker_nodes = 2
+  number_of_broker_nodes = 3
   client_subnets = ["subnet-id"]
-  private_subnet_ids = ["private-subnet-id"]
 
-  s3_logs_prefix = ""
-  s3_logs_enabled = false
-  s3_logs_bucket_name = ""
+  s3_logs_enabled = true
+  s3_logs_prefix = "logs/msk-"
+  s3_logs_bucket_name = "msk-logs"
 }
 ```
 
