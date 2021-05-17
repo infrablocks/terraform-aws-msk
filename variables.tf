@@ -1,36 +1,23 @@
-variable component {
-  default = ""
-}
-variable deployment_identifier {
-  default = ""
-}
-variable vpc_id {
-  default = ""
-}
+variable component {}
+variable deployment_identifier {}
+variable vpc_id {}
 
 variable region {
   default = "eu-west-2"
 }
 
-variable include_default_egress_rule {
-  default = ""
-}
+variable include_default_egress_rule {}
 variable egress_cidrs {
   type = list(string)
 }
 
-variable include_default_ingress_rule {
-  default = ""
-}
+variable include_default_ingress_rule {}
 variable allowed_cidrs {
   type = list(string)
 }
 
-variable cluster_name {
-  type = string
-}
+variable cluster_name {}
 variable kafka_version {
-  type    = string
   default = "2.7.0"
 }
 variable number_of_broker_nodes {
@@ -38,7 +25,6 @@ variable number_of_broker_nodes {
   type    = number
 }
 variable instance_type {
-  type    = string
   default = "kafka.m5.large"
 }
 variable ebs_volume_size {
@@ -48,28 +34,19 @@ variable ebs_volume_size {
 variable client_subnets {
   type = list(string)
 }
-variable s3_logs_prefix {
-  type    = string
-  default = "logs/msk-"
-}
 variable cloud_watch_logs_enabled {
   default = false
 }
-variable log_group_name {
-  default = ""
-}
+variable log_group_name {}
 variable firehose_enabled {
   default = false
 }
-variable firehose_stream_name {
-  default = ""
-}
+variable firehose_stream_name {}
 variable s3_logs_enabled {
   default = false
 }
-variable s3_logs_bucket_name {
-  default = ""
-}
+variable s3_logs_prefix {}
+variable s3_logs_bucket_name {}
 variable tags {
   type        = map(string)
   description = "Additional resource tags"
