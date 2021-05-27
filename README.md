@@ -1,7 +1,7 @@
-Terraform AWS MSK Cluster
-=========================
+Terraform AWS MSK
+=================
 
-[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-msk-cluster.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-msk-cluster)
+[![CircleCI](https://circleci.com/gh/infrablocks/terraform-aws-msk.svg?style=svg)](https://circleci.com/gh/infrablocks/terraform-aws-msk)
 
 A Terraform module for building an MSK cluster in AWS.
 
@@ -21,8 +21,8 @@ To use the module, include something like the following in your terraform
 configuration:
 
 ```hcl-terraform
-module "msk_cluster" {
-  source = "infrablocks/msk-cluster/aws"
+module "msk" {
+  source = "infrablocks/msk/aws"
   component = "kafka-cluster"
   deployment_identifier = "dev"
 
@@ -222,7 +222,7 @@ Contributing
 ------------
 
 Bug reports and pull requests are welcome on GitHub at 
-https://github.com/tobyclemson/terraform-aws-ecs-cluster. This project is 
+https://github.com/infrablocks/terraform-aws-msk. This project is 
 intended to be a safe, welcoming space for collaboration, and contributors are 
 expected to adhere to the 
 [Contributor Covenant](http://contributor-covenant.org) code of conduct.
