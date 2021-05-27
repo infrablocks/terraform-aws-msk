@@ -29,4 +29,4 @@ allowed_cidrs:
 egress_cidrs:
   - '10.1.0.0/16'
 
-private_zone_id: "Z00024102SGL0I8C60AZZ"
+private_zone_id: 'Z2CDAFD23Q10HO'
