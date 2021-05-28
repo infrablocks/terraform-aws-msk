@@ -50,6 +50,9 @@ module will create everything you need. See the
 [docs](https://github.com/tobyclemson/terraform-aws-base-networking/blob/master/README.md)
 for usage instructions.
 
+See the 
+[Terraform registry entry](https://registry.terraform.io/modules/infrablocks/msk/aws/latest) 
+for more details.
 
 ### Inputs
 
@@ -89,6 +92,10 @@ for usage instructions.
 | cluster_arn               | The ARN of the created MSK cluster                                               |
 |security_group_id|
 
+### Compatibility
+
+This module is compatible with Terraform versions greater than or equal to 
+Terraform 0.14.
 
 ### Required Permissions
 
