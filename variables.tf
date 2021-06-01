@@ -75,3 +75,7 @@ variable tags {
   description = "Additional resource tags"
   default     = {}
 }
+
+variable configuration_name {
+  default = "msk-config"
+}

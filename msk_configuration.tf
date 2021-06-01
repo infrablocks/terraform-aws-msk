@@ -1,6 +1,6 @@
 resource "aws_msk_configuration" "msk_config" {
   kafka_versions = [var.kafka_version]
-  name           = "${var.component}-${var.deployment_identifier}-msk-config"
+  name           = "${var.component}-${var.deployment_identifier}-${var.configuration_name}"
 
   server_properties = <<PROPERTIES
 auto.create.topics.enable=false
