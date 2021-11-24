@@ -52,5 +52,5 @@ resource "aws_msk_cluster" "cluster" {
     }
   }
 
-  tags = var.tags
+  tags = local.tags
 }
