@@ -15,7 +15,10 @@ configuration_directory: "%{hiera('work_directory')}/%{hiera('source_directory')
 vpc_cidr: "10.1.0.0/16"
 
 cluster_name: 'test-cluster'
+
 number_of_broker_nodes: 2
+
+kafka_version: "2.8.1"
 
 s3_logs_enabled: false
 s3_logs_bucket_name: ""

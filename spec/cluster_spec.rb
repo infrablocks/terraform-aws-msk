@@ -7,4 +7,8 @@ describe 'MSK Cluster' do
 
   it { should exist }
 
+  it 'has the correct kafka version' do
+    expect(subject.current_broker_software_info.kafka_version)
+      .to(eq(vars.kafka_version))
+  end
 end

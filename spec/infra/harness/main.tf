@@ -16,10 +16,15 @@ module "msk_cluster" {
   tags = var.tags
 
   cluster_name = var.cluster_name
+
+  kafka_version = var.kafka_version
+
   vpc_id = data.terraform_remote_state.prerequisites.outputs.vpc_id
+
   include_default_egress_rule = var.include_default_egress_rule
-  egress_cidrs = var.egress_cidrs
   include_default_ingress_rule  = var.include_default_ingress_rule
+
+  egress_cidrs = var.egress_cidrs
   allowed_cidrs = var.allowed_cidrs
   
   number_of_broker_nodes = var.number_of_broker_nodes
@@ -28,5 +33,4 @@ module "msk_cluster" {
   s3_logs_prefix = var.s3_logs_prefix
   s3_logs_enabled = var.s3_logs_enabled
   s3_logs_bucket_name = var.s3_logs_bucket_name
-
 }

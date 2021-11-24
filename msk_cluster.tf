@@ -1,8 +1,8 @@
-
 resource "aws_msk_cluster" "cluster" {
   cluster_name           = "${var.component}-${var.deployment_identifier}-${var.cluster_name}"
   kafka_version          = var.kafka_version
   number_of_broker_nodes = var.number_of_broker_nodes
+
   broker_node_group_info {
     instance_type   = var.instance_type
     ebs_volume_size = var.ebs_volume_size
@@ -28,12 +28,11 @@ resource "aws_msk_cluster" "cluster" {
       }
     }
   }
+
   configuration_info {
     arn      = aws_msk_configuration.msk_config.arn
     revision = aws_msk_configuration.msk_config.latest_revision
   }
-
-
 
   logging_info {
     broker_logs {

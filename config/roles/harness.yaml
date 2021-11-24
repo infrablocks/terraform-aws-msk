@@ -3,21 +3,24 @@ source_directory: "spec/infra/harness"
 state_file: "%{hiera('project_directory')}/state/harness.tfstate"
 ami_id_in_region: "%{hiera('custom_ami_id')}"
 vars:
+  region: "%{hiera('region')}"
   component: "%{hiera('component')}"
   deployment_identifier: "%{hiera('deployment_identifier')}"
 
   tags: "%{hiera('tags')}"
 
   cluster_name: "%{hiera('cluster_name')}"
+
   number_of_broker_nodes: "%{hiera('number_of_broker_nodes')}"
+
+  kafka_version: "%{hiera('kafka_version')}"
+
   s3_logs_enabled: "%{hiera('s3_logs_enabled')}"
   s3_logs_bucket_name: "%{hiera('s3_logs_bucket_name')}"
   s3_logs_prefix: "%{hiera('s3_logs_prefix')}"
 
   include_default_ingress_rule: "%{hiera('include_default_ingress_rule')}"
   include_default_egress_rule: "%{hiera('include_default_egress_rule')}"
-  
-  
 
   allowed_cidrs: "%{hiera('allowed_cidrs')}"
   egress_cidrs: "%{hiera('egress_cidrs')}"

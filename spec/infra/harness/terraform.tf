@@ -6,13 +6,9 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 3.33"
     }
-    null     = {
-      source  = "hashicorp/null"
-      version = "~> 3.0"
-    }
-    template = {
-      source  = "hashicorp/template"
-      version = "~> 2.2"
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.1"
     }
   }
 }

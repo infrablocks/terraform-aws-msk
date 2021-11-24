@@ -1,34 +1,23 @@
-variable component {
-  default = ""
-}
-variable deployment_identifier {
-  default = ""
-}
-variable vpc_id {
-  default = ""
-}
+variable component {}
+variable deployment_identifier {}
 
-variable region {
-  default = "eu-west-2"
-}
+variable vpc_id {}
 
 variable include_default_egress_rule {
-  default = ""
+  default = "yes"
 }
 variable egress_cidrs {
   type = list(string)
 }
 
 variable include_default_ingress_rule {
-  default = ""
+  default = "yes"
 }
 variable allowed_cidrs {
   type = list(string)
 }
 
-variable cluster_name {
-  type = string
-}
+variable cluster_name {}
 variable kafka_version {
   type    = string
   default = "2.7.0"
@@ -77,7 +66,7 @@ variable tags {
 }
 
 variable configuration_name {
-  default = "msk-config"
+  default = ""
 }
 
 variable server_properties {
