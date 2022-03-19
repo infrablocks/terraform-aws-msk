@@ -32,7 +32,7 @@ jobs:
   merge_pull_request:
     working_directory: ~/source
     docker:
-      - image: ruby:2.7.5
+      - image: ruby:3.1.1
     steps:
       - checkout
       - run: ./scripts/ci/common/install-git-crypt.sh
