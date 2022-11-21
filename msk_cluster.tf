@@ -5,9 +5,14 @@ resource "aws_msk_cluster" "cluster" {
 
   broker_node_group_info {
     instance_type   = var.instance_type
-    ebs_volume_size = var.ebs_volume_size
     client_subnets  = var.client_subnets
     security_groups = [aws_security_group.cluster.id]
+
+    storage_info {
+      ebs_storage_info {
+        volume_size = var.ebs_volume_size
+      }
+    }
   }
 
   encryption_info {
@@ -37,20 +42,20 @@ resource "aws_msk_cluster" "cluster" {
   logging_info {
     broker_logs {
       cloudwatch_logs {
-        enabled   = var.cloud_watch_logs_enabled
-        log_group = var.log_group_name
+        enabled   = var.enable_cloudwatch_logging
+        log_group = var.enable_cloudwatch_logging ? var.cloudwatch_logging_log_group_name : null
       }
       firehose {
-        enabled         = var.firehose_enabled
-        delivery_stream = var.firehose_stream_name
+        enabled         = var.enable_firehose_logging
+        delivery_stream = var.enable_firehose_logging ? var.firehose_logging_stream_name : null
       }
       s3 {
-        enabled = var.s3_logs_enabled
-        bucket  = var.s3_logs_bucket_name
-        prefix  = var.s3_logs_prefix
+        enabled = var.enable_s3_logging
+        bucket  = var.enable_s3_logging ? var.s3_logging_bucket_name : null
+        prefix  = var.enable_s3_logging ? var.s3_logging_object_prefix : null
       }
     }
   }
 
-  tags = local.tags
+  tags = local.resolved_tags
 }

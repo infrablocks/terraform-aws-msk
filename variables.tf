@@ -1,88 +1,129 @@
-variable component {}
-variable deployment_identifier {}
-
-variable vpc_id {}
-
-variable include_default_egress_rule {
-  default = "yes"
+variable "component" {
+  type = string
 }
-variable egress_cidrs {
+variable "deployment_identifier" {
+  type = string
+}
+
+variable "vpc_id" {
+  type = string
+}
+variable "client_subnets" {
   type = list(string)
 }
 
-variable include_default_ingress_rule {
-  default = "yes"
+variable "cluster_name" {
+  type = string
 }
-variable allowed_cidrs {
-  type = list(string)
+variable "kafka_version" {
+  type     = string
+  default  = "2.7.0"
+  nullable = false
+}
+variable "number_of_broker_nodes" {
+  type     = number
+  default  = 3
+  nullable = false
+}
+variable "instance_type" {
+  type     = string
+  default  = "kafka.m5.large"
+  nullable = false
+}
+variable "ebs_volume_size" {
+  type     = number
+  default  = 1000
+  nullable = false
 }
 
-variable cluster_name {}
-variable kafka_version {
-  type    = string
-  default = "2.7.0"
+variable "configuration_name" {
+  type     = string
+  default  = ""
+  nullable = false
 }
-variable number_of_broker_nodes {
-  default = 3
-  type    = number
+
+variable "server_properties" {
+  type     = string
+  default  = <<-PROPERTIES
+    auto.create.topics.enable=false
+    default.replication.factor=3
+    min.insync.replicas=2
+    num.io.threads=8
+    num.network.threads=5
+    num.partitions=1
+    num.replica.fetchers=2
+    replica.lag.time.max.ms=30000
+    socket.receive.buffer.bytes=102400
+    socket.request.max.bytes=104857600
+    socket.send.buffer.bytes=102400
+    unclean.leader.election.enable=true
+    zookeeper.session.timeout.ms=18000
+  PROPERTIES
+  nullable = false
 }
-variable instance_type {
-  type    = string
-  default = "kafka.m5.large"
+
+variable "include_default_ingress_rule" {
+  type     = bool
+  default  = true
+  nullable = false
 }
-variable ebs_volume_size {
-  default = 1000
-  type    = number
+variable "allowed_cidrs" {
+  type     = list(string)
+  default  = []
+  nullable = false
 }
-variable client_subnets {
-  type = list(string)
+variable "include_default_egress_rule" {
+  type     = bool
+  default  = true
+  nullable = false
 }
-variable s3_logs_prefix {
-  type    = string
-  default = "logs/msk-"
+variable "egress_cidrs" {
+  type     = list(string)
+  default  = []
+  nullable = false
 }
-variable cloud_watch_logs_enabled {
-  default = false
+
+variable "enable_s3_logging" {
+  type     = bool
+  default  = false
+  nullable = false
 }
-variable log_group_name {
-  default = ""
+variable "s3_logging_bucket_name" {
+  type     = string
+  default  = ""
+  nullable = false
 }
-variable firehose_enabled {
-  default = false
+variable "s3_logging_object_prefix" {
+  type     = string
+  default  = "logs/msk-"
+  nullable = false
 }
-variable firehose_stream_name {
-  default = ""
+
+variable "enable_cloudwatch_logging" {
+  type     = bool
+  default  = false
+  nullable = false
 }
-variable s3_logs_enabled {
-  default = false
+variable "cloudwatch_logging_log_group_name" {
+  type     = string
+  default  = ""
+  nullable = false
 }
-variable s3_logs_bucket_name {
-  default = ""
+
+variable "enable_firehose_logging" {
+  type     = bool
+  default  = false
+  nullable = false
 }
-variable tags {
+variable "firehose_logging_stream_name" {
+  type     = string
+  default  = ""
+  nullable = false
+}
+
+variable "tags" {
   type        = map(string)
   description = "Additional resource tags"
   default     = {}
-}
-
-variable configuration_name {
-  default = ""
-}
-
-variable server_properties {
-  default = <<PROPERTIES
-  auto.create.topics.enable=false
-  default.replication.factor=3
-  min.insync.replicas=2
-  num.io.threads=8
-  num.network.threads=5
-  num.partitions=1
-  num.replica.fetchers=2
-  replica.lag.time.max.ms=30000
-  socket.receive.buffer.bytes=102400
-  socket.request.max.bytes=104857600
-  socket.send.buffer.bytes=102400
-  unclean.leader.election.enable=true
-  zookeeper.session.timeout.ms=18000
-  PROPERTIES
+  nullable    = false
 }

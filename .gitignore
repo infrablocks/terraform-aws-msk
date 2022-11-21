@@ -28,6 +28,10 @@ run/logs/
 .rspec_status
 
 # Terraform
+spec/**/*.tgz
+examples/**/*.tgz
+state/
 .terraform
+*.tfplan
 *.tfstate
 *.tfstate.backup
