@@ -81,9 +81,8 @@ describe 'cluster' do
         .to(include_resource_creation(type: 'aws_msk_cluster')
               .with_attribute_value(
                 [:broker_node_group_info, 0, :client_subnets],
-                contain_exactly(
-                  *output(role: :prerequisites, name: 'private_subnet_ids')
-                )
+                match_array(output(role: :prerequisites,
+                                   name: 'private_subnet_ids'))
               ))
     end
 
